@@ -48,8 +48,8 @@ check_sys(){
 }
 installSocat(){
 	[[ -e ${socat_file} ]] && echo -e "${Error} 已经安装Socat，请检查 !" && exit 1
-	apt-get update
-	apt-get install -y socat
+	yum update
+	yum install -y socat
 	Set_iptables
 	chmod +x /etc/rc.local
 	# echo "nameserver 8.8.8.8" > /etc/resolv.conf
