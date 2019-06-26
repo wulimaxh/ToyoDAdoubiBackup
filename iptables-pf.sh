@@ -81,7 +81,7 @@ Set_local_port(){
 Set_local_ip(){
 	read -e -p "请输入 本服务器的 网卡IP(注意是网卡绑定的IP，而不仅仅是公网IP，回车自动检测外网IP):" local_ip
 	if [[ -z "${local_ip}" ]]; then
-		local_ip=$(wget -qO- -t1 -T2 ipinfo.io/ip)
+		local_ip=172.18.115.59
 		if [[ -z "${local_ip}" ]]; then
 			echo "${Error} 无法检测到本服务器的公网IP，请手动输入"
 			read -e -p "请输入 本服务器的 网卡IP(注意是网卡绑定的IP，而不仅仅是公网IP):" local_ip
@@ -95,8 +95,8 @@ Set_forwarding_type(){
  1. TCP
  2. UDP
  3. TCP+UDP\n"
-	read -e -p "(默认: TCP+UDP):" forwarding_type_num
-	[[ -z "${forwarding_type_num}" ]] && forwarding_type_num="3"
+	read -e -p "(默认: UDP):" forwarding_type_num
+	[[ -z "${forwarding_type_num}" ]] && forwarding_type_num="1"
 	if [[ ${forwarding_type_num} == "1" ]]; then
 		forwarding_type="TCP"
 	elif [[ ${forwarding_type_num} == "2" ]]; then
